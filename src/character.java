@@ -6,6 +6,7 @@ public class character {
     private int Level;
     private int Experience;
     private clas Class = new clas();
+    private Race Race = new Race();
 
     public void MakeCharacter(String CharName, int CharAge, Ability CharAbility, Stats CharStats, clas Class) {
         this.CharName = CharName;
@@ -15,6 +16,7 @@ public class character {
         Level = 0;
         Experience = 0;
         this.Class = Class;
+        this.Race = Race;
     }
 
     public Ability getCharAbility() {
