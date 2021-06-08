@@ -10,7 +10,7 @@ public class clas {
                 Player.setCharStats(5, 0, 10, 50, 10, 0, 0);
                 break;
             case "Mage":
-                Player.setCharStats(0, 10, 0, 0, 0, 0, 0);
+                Player.setCharStats(0, 10, 0, 0, 0, 10, 0);
                 break;
             case "Assassin":
                 Player.setCharStats(10, 0, 50, 0, 0, 20, 50);
