@@ -6,7 +6,7 @@ public class StartGame {
     private static Stats Stats = new Stats();
 
 
-    public void Start() {
+    public void MakeCharacter() {
         win.Print("Hello, Player");
         win.Print("At first chose your class");
         win.Print("Warrior");
