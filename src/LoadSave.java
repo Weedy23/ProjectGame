@@ -37,6 +37,8 @@ public class LoadSave extends Main{
         FileReader fileReader = new FileReader(String.valueOf(path));
 
         Object obj = jsonParser.parse(fileReader);
+        JSONArray arrayObj = (JSONArray) obj;
+        arrayObj.forEach(player -> );
 
         Player.LoadCharacter(jsonPlayer.getString("CharName"), jsonPlayer.getInt("CharAge"), jsonPlayer.getInt("Level"), jsonPlayer.getInt("Experience"), jsonPlayer.getString("ClassName"), jsonPlayer.getString("RaceName"));
         JsonObject jsonStats = jsonPlayer.getJsonObject("Stats");
