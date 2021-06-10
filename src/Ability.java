@@ -5,14 +5,6 @@ public class Ability {
     private int BaseAbility = 10;
     private int SpecialAbility = 30;
 
-    public void MakeAbility(int BaseAttack, int StrongAttack, int Heal, int BaseAbility, int SpecialAbility) {
-        this.BaseAttack = BaseAttack;
-        this.StrongAttack = StrongAttack;
-        this.Heal = Heal;
-        this.BaseAbility = BaseAbility;
-        this.SpecialAbility = SpecialAbility;
-    }
-
     public int getBaseAttack() {
         return BaseAttack;
     }
@@ -31,5 +23,25 @@ public class Ability {
 
     public int getSpecialAbility() {
         return SpecialAbility;
+    }
+
+    public void setBaseAttack(int baseAttack) {
+        BaseAttack = baseAttack;
+    }
+
+    public void setStrongAttack(int strongAttack) {
+        StrongAttack = strongAttack;
+    }
+
+    public void setHeal(int heal) {
+        Heal = heal;
+    }
+
+    public void setBaseAbility(int baseAbility) {
+        BaseAbility = baseAbility;
+    }
+
+    public void setSpecialAbility(int specialAbility) {
+        SpecialAbility = specialAbility;
     }
 }
