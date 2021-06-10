@@ -17,4 +17,12 @@ public class clas {
                 break;
         }
     }
+
+    public void setClassName(String className) {
+        ClassName = className;
+    }
+
+    public String getClassName() {
+        return ClassName;
+    }
 }
