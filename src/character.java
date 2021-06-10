@@ -8,27 +8,74 @@ public class character {
     private clas Clas = new clas();
     private Race Race = new Race();
 
-    public void MakeCharacter(String CharName, int CharAge, Ability CharAbility, Stats CharStats, clas Class) {
+    public void MakeCharacter(String CharName, int CharAge, clas Class, Race Race) {
         this.CharName = CharName;
         this.CharAge = CharAge;
-        this.CharAbility = CharAbility;
-        this.CharStats = CharStats;
         Level = 0;
         Experience = 0;
         this.Clas = Class;
         this.Race = Race;
     }
 
+    public void LoadCharacter(String CharName, int CharAge, int Level, int Experience, String ClassName, String RaceName) {
+        this.CharName = CharName;
+        this.CharAge = CharAge;
+        this.Level = Level;
+        this.Experience = Experience;
+        this.Clas.setClassName(ClassName);
+        this.Race.setRaceName(RaceName);
+    }
+
+    public void LoadStats(int Strength, int Intelligence, int Stamina, int Hp, int Defense, int CriticalChance, int CriticalPower) {
+        CharStats.setStrength(Strength);
+        CharStats.setMaxIntelligence(Intelligence);
+        CharStats.setIntelligence(Intelligence);
+        CharStats.setMaxStamina(Stamina);
+        CharStats.setStamina(Stamina);
+        CharStats.setHp(Hp);
+        CharStats.setDefense(Defense);
+        CharStats.setCriticalChance(CriticalChance);
+        CharStats.setCriticalPower(CriticalPower);
+    }
+
+    public void LoadAbility(int BaseAttack, int StrongAttack, int Heal, int BaseAbility, int SpecialAbility) {
+        CharAbility.setBaseAttack(BaseAttack);
+        CharAbility.setStrongAttack(StrongAttack);
+        CharAbility.setHeal(Heal);
+        CharAbility.setBaseAbility(BaseAbility);
+        CharAbility.setSpecialAbility(SpecialAbility);
+    }
+
     public String getCharName() {
         return CharName;
+    }
+
+    public int getCharAge() {
+        return CharAge;
+    }
+
+    public int getLevel() {
+        return Level;
+    }
+
+    public int getExperience() {
+        return Experience;
     }
 
     public clas getClas() {
         return Clas;
     }
 
+    public String getClassName() {
+        return Clas.getClassName();
+    }
+
     public Race getRace() {
         return Race;
+    }
+
+    public String getRaceName() {
+        return Race.getRaceName();
     }
 
     public Ability getCharAbility() {
@@ -39,18 +86,12 @@ public class character {
         return CharStats;
     }
 
-    public void setCharAbility(Ability charAbility) {
-        CharAbility = charAbility;
-    }
-
-    public void setExperience(int experience) {
-        Experience = experience;
-    }
-
     public void setCharStats(int Strength, int Intelligence, int Stamina, int Hp, int Defense, int CriticalChance, int CriticalPower) {
         CharStats.setStrength(CharStats.getStrength() + Strength);
         CharStats.setMaxIntelligence(CharStats.getMaxIntelligence() + Intelligence);
+        CharStats.setIntelligence(CharStats.getIntelligence() + Intelligence);
         CharStats.setMaxStamina(CharStats.getMaxStamina() + Stamina);
+        CharStats.setStamina(CharStats.getStamina() + Stamina);
         CharStats.setHp(CharStats.getHp() + Hp);
         CharStats.setDefense(CharStats.getDefense() + Defense);
         CharStats.setCriticalChance(CharStats.getCriticalChance() + CriticalChance);
