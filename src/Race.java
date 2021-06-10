@@ -16,4 +16,12 @@ public class Race {
                 break;
         }
     }
+
+    public void setRaceName(String raceName) {
+        RaceName = raceName;
+    }
+
+    public String getRaceName() {
+        return RaceName;
+    }
 }
