@@ -5,15 +5,15 @@ public class character {
     private Stats CharStats = new Stats();
     private int Level;
     private int Experience;
-    private clas Clas = new clas();
-    private Race Race = new Race();
+    private String Class;
+    private String Race;
 
-    public void MakeCharacter(String CharName, int CharAge, clas Class, Race Race) {
+    public void MakeCharacter(String CharName, int CharAge, String Class, String Race) {
         this.CharName = CharName;
         this.CharAge = CharAge;
         Level = 0;
         Experience = 0;
-        this.Clas = Class;
+        this.Class = Class;
         this.Race = Race;
     }
 
@@ -22,8 +22,8 @@ public class character {
         this.CharAge = CharAge;
         this.Level = Level;
         this.Experience = Experience;
-        this.Clas.setClassName(ClassName);
-        this.Race.setRaceName(RaceName);
+        this.Class = ClassName;
+        this.Race = RaceName;
     }
 
     public void LoadStats(int Strength, int Intelligence, int Stamina, int Hp, int Defense, int CriticalChance, int CriticalPower) {
@@ -62,20 +62,12 @@ public class character {
         return Experience;
     }
 
-    public clas getClas() {
-        return Clas;
-    }
-
     public String getClassName() {
-        return Clas.getClassName();
+        return Class;
     }
 
-    public Race getRace() {
+    public String getRace() {
         return Race;
-    }
-
-    public String getRaceName() {
-        return Race.getRaceName();
     }
 
     public Ability getCharAbility() {
