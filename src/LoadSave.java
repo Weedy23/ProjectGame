@@ -12,6 +12,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Map;
 
 public class LoadSave extends Main{
 
@@ -22,7 +23,7 @@ public class LoadSave extends Main{
         player.put("Level", Player.getLevel());
         player.put("Experience", Player.getExperience());
         player.put("ClassName", Player.getClassName());
-        player.put("RaceName", Player.getRaceName());
+        player.put("RaceName", Player.getRace());
         player.put("Stats", Player.getCharStats());
         player.put("Ability", Player.getCharAbility());
 
@@ -31,7 +32,7 @@ public class LoadSave extends Main{
         fileWriter.flush();
         fileWriter.close();
     }
-
+/*
     public static void LoadCharacter(Path path) throws IOException, ParseException {
         JSONParser jsonParser = new JSONParser();
         FileReader fileReader = new FileReader(String.valueOf(path));
@@ -46,6 +47,8 @@ public class LoadSave extends Main{
         JsonObject jsonAbility = jsonPlayer.getJsonObject("Ability");
         Player.LoadAbility(jsonAbility.getInt("BaseAttack"), jsonAbility.getInt("StrongAttack"), jsonAbility.getInt("Heal"), jsonAbility.getInt("BaseAbility"), jsonAbility.getInt("SpecialAbility"));
     }
+
+ */
 
     public static boolean FileCheck(Path path) throws IOException {
         return Files.readAllLines(path).isEmpty();
