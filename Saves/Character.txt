@@ -1,0 +1,1 @@
+{"Ability":Ability@cb28ffe5,"Experience":0,"ClassName":"Warrior","Stats":Stats@d300a3b,"CharName":"David","Level":0,"CharAge":16,"RaceName":"Orc"}
