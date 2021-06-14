@@ -1,9 +1,7 @@
 public class MakeCharacter extends Main {
     private static final Window win = new Window();
-    private static final clas Class = new clas();
     private static final Ability Ability = new Ability();
     private static final Stats Stats = new Stats();
-    private static final Race Race = new Race();
 
 
     public void MakeCharacter() {
@@ -15,7 +13,6 @@ public class MakeCharacter extends Main {
         win.Print("Write the name of class below");
 
         String RaceName = win.getText();
-        Race.MakeRace(RaceName, Player);
 
         win.Print("Nice chose");
         win.Print("Now chose your class");
@@ -25,7 +22,6 @@ public class MakeCharacter extends Main {
         win.Print("Write the name of class below");
 
         String ClassName = win.getText();
-        Class.MakeClass(ClassName, Player);
 
         win.Print("Nice chose");
         win.Print(RaceName + ", what is your name?");
@@ -35,9 +31,37 @@ public class MakeCharacter extends Main {
         win.Print("Hi, " + CharName + ", how old are you?");
 
         int CharAge = win.getInt();
-        Player.MakeCharacter(CharName, CharAge, Class, Race);
+        Player.MakeCharacter(CharName, CharAge, ClassName, RaceName);
 
         win.Print("Now your character is created!");
         win.Print("Have a nice game!");
+    }
+
+    public void SetClassStats(String ClassName) {
+        switch (ClassName) {
+            case "Warrior":
+                Player.setCharStats(5, 0, 10, 50, 10, 0, 0);
+                break;
+            case "Mage":
+                Player.setCharStats(0, 10, 0, 0, 0, 10, 0);
+                break;
+            case "Assassin":
+                Player.setCharStats(10, 0, 50, 0, 0, 20, 50);
+                break;
+        }
+    }
+
+    public void SetRaceStats(String RaceName) {
+        switch (RaceName) {
+            case "Human":
+                Player.setCharStats(0, 10, 0, 0, 0, 10, 0);
+                break;
+            case "Orc":
+                Player.setCharStats(10, 0, 10, 50, 10, 0, 20);
+                break;
+            case "Elf":
+                Player.setCharStats(0, 0, 50, 0, 0, 5, 10);
+                break;
+        }
     }
 }
