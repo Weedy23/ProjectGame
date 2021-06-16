@@ -31,7 +31,7 @@ public class MakeCharacter extends Main {
         win.Print("Hi, " + CharName + ", how old are you?");
 
         int CharAge = win.getInt();
-        Player.MakeCharacter(CharName, CharAge, ClassName, RaceName);
+        Player.MakeCharacter(CharName, CharAge, 0, 0, ClassName, RaceName);
 
         win.Print("Now your character is created!");
         win.Print("Have a nice game!");
