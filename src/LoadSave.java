@@ -1,19 +1,12 @@
-import netscape.javascript.JSObject;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
-import javax.json.JsonWriter;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+
+import static java.lang.Integer.parseInt;
 
 public class LoadSave extends Main{
 
@@ -35,9 +28,7 @@ public class LoadSave extends Main{
         JSONObject charStats = new JSONObject();
         charStats.put("Strength", Player.getCharStats().getStrength());
         charStats.put("MaxIntelligence", Player.getCharStats().getMaxIntelligence());
-        charStats.put("Intelligence", Player.getCharStats().getIntelligence());
         charStats.put("MaxStamina", Player.getCharStats().getMaxStamina());
-        charStats.put("Stamina", Player.getCharStats().getStamina());
         charStats.put("Hp", Player.getCharStats().getHp());
         charStats.put("Defense", Player.getCharStats().getDefense());
         charStats.put("CriticalChance", Player.getCharStats().getCriticalChance());
@@ -69,8 +60,30 @@ public class LoadSave extends Main{
         Object obj = jsonParser.parse(fileReader);
         JSONObject jsonFile = (JSONObject) obj;
         JSONObject player = (JSONObject) jsonFile.get("Player");
+
         JSONObject info = (JSONObject) player.get("Info");
-        System.out.println(info.get("CharName"));
+        Player.MakeCharacter(info.get("CharName").toString(),
+                parseInt(info.get("CharAge").toString()),
+                parseInt(info.get("Level").toString()),
+                parseInt(info.get("Experience").toString()),
+                info.get("ClassName").toString(),
+                info.get("RaceName").toString());
+
+        JSONObject stats = (JSONObject) player.get("Stats");
+        Player.LoadStats(parseInt(stats.get("Strength").toString()),
+                parseInt(stats.get("MaxIntelligence").toString()),
+                parseInt(stats.get("MaxStamina").toString()),
+                parseInt(stats.get("Hp").toString()),
+                parseInt(stats.get("Defense").toString()),
+                parseInt(stats.get("CriticalChance").toString()),
+                parseInt(stats.get("CriticalPower").toString()));
+
+        JSONObject ability = (JSONObject) player.get("Ability");
+        Player.LoadAbility(parseInt(ability.get("BaseAttack").toString()),
+                parseInt(ability.get("StrongAttack").toString()),
+                parseInt(ability.get("Heal").toString()),
+                parseInt(ability.get("BaseAbility").toString()),
+                parseInt(ability.get("SpecialAbility").toString()));
     }
 
     public static boolean FileCheck(Path path) throws IOException {
