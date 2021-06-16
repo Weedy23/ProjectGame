@@ -8,16 +8,7 @@ public class character {
     private String Class;
     private String Race;
 
-    public void MakeCharacter(String CharName, int CharAge, String Class, String Race) {
-        this.CharName = CharName;
-        this.CharAge = CharAge;
-        Level = 0;
-        Experience = 0;
-        this.Class = Class;
-        this.Race = Race;
-    }
-
-    public void LoadCharacter(String CharName, int CharAge, int Level, int Experience, String ClassName, String RaceName) {
+    public void MakeCharacter(String CharName, int CharAge, int Level, int Experience, String ClassName, String RaceName) {
         this.CharName = CharName;
         this.CharAge = CharAge;
         this.Level = Level;
