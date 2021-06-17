@@ -19,9 +19,9 @@ public class Main {
     public static void main(String[] args) throws IOException, ParseException {
         Path path = Paths.get(PATHcharacter);
         if (LOAD_SAVE.FileCheck(path)) {
-            MakeCharacter.MakeCharacter();
-        } else {
             LOAD_SAVE.LoadCharacter(path);
+        } else {
+            MakeCharacter.MakeCharacter();
         }
         Game.Game();
     }
