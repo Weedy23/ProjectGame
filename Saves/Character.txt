@@ -1,1 +1,0 @@
-{"Player":{"Ability":{"BaseAbility":10,"BaseAttack":10,"SpecialAbility":30,"Heal":20,"StrongAttack":30},"Stats":{"CriticalPower":20,"Intelligence":100,"CriticalChance":10,"MaxStamina":100,"Hp":100,"MaxIntelligence":100,"Strength":10,"Stamina":100,"Defense":10},"Info":{"Experience":0,"ClassName":null,"CharName":null,"Level":0,"CharAge":0,"RaceName":null}}}
