@@ -47,6 +47,9 @@ public class LoadSave extends Main{
 
         file.put("Player", player);
 
+        if (!FileCheck(path)) {
+            Files.createFile(path);
+        }
         FileWriter fileWriter = new FileWriter(String.valueOf(path));
         fileWriter.write(file.toJSONString());
         fileWriter.flush();
@@ -62,6 +65,7 @@ public class LoadSave extends Main{
         JSONObject player = (JSONObject) jsonFile.get("Player");
 
         JSONObject info = (JSONObject) player.get("Info");
+
         Player.MakeCharacter(info.get("CharName").toString(),
                 parseInt(info.get("CharAge").toString()),
                 parseInt(info.get("Level").toString()),
@@ -87,6 +91,6 @@ public class LoadSave extends Main{
     }
 
     public static boolean FileCheck(Path path) throws IOException {
-        return Files.readAllLines(path).isEmpty();
+        return Files.exists(path);
     }
 }
