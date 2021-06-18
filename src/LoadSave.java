@@ -45,6 +45,18 @@ public class LoadSave extends Main{
 
         player.put("Ability", charAbility);
 
+        if (Player.getCharLoot() != null) {
+            JSONObject charLoot = new JSONObject();
+            charLoot.put("Name", Player.getCharLoot().getName());
+            charLoot.put("Rarity", Player.getCharLoot().getRarity());
+            charLoot.put("Attack", Player.getCharLoot().getAttack());
+            charLoot.put("Intelligence", Player.getCharLoot().getIntelligence());
+            charLoot.put("Hp", Player.getCharLoot().getHp());
+            charLoot.put("Defense", Player.getCharLoot().getDefense());
+
+            player.put("Loot", charLoot);
+        }
+
         file.put("Player", player);
 
         if (!FileCheck(path)) {
@@ -88,9 +100,23 @@ public class LoadSave extends Main{
                 parseInt(ability.get("Heal").toString()),
                 parseInt(ability.get("BaseAbility").toString()),
                 parseInt(ability.get("SpecialAbility").toString()));
+
+        if (player.containsKey("Loot")) {
+            JSONObject loot = (JSONObject) player.get("Loot");
+            Player.setCharLoot(Loot.makeLoot(loot.get("Name").toString(),
+                    parseInt(loot.get("Rarity").toString()),
+                    parseInt(loot.get("Attack").toString()),
+                    parseInt(loot.get("Intelligence").toString()),
+                    parseInt(loot.get("Hp").toString()),
+                    parseInt(loot.get("Defense").toString())));
+        }
     }
 
     public static boolean FileCheck(Path path) throws IOException {
         return Files.exists(path);
+    }
+
+    public static void FileDelete(Path path) throws IOException {
+        Files.delete(path);
     }
 }
