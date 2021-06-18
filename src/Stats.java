@@ -4,6 +4,7 @@ public class Stats {
     private int Intelligence = 100;
     private int MaxStamina = 100;
     private int Stamina = 100;
+    private int MaxHp = 100;
     private int Hp = 100;
     private int Defense = 10;
     private int CriticalChance = 10;
@@ -27,6 +28,10 @@ public class Stats {
 
     public int getStamina() {
         return Stamina;
+    }
+
+    public int getMaxHp() {
+        return MaxHp;
     }
 
     public int getHp() {
@@ -63,6 +68,10 @@ public class Stats {
 
     public void setStamina(int stamina) {
         Stamina = stamina;
+    }
+
+    public void setMaxHp(int hpMax) {
+        MaxHp = hpMax;
     }
 
     public void setHp(int hp) {
