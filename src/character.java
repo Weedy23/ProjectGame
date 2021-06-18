@@ -7,6 +7,7 @@ public class character {
     private int Experience;
     private String Class;
     private String Race;
+    private Loot CharLoot;
 
     public void MakeCharacter(String CharName, int CharAge, int Level, int Experience, String ClassName, String RaceName) {
         this.CharName = CharName;
@@ -23,6 +24,7 @@ public class character {
         CharStats.setIntelligence(Intelligence);
         CharStats.setMaxStamina(Stamina);
         CharStats.setStamina(Stamina);
+        CharStats.setMaxHp(Hp);
         CharStats.setHp(Hp);
         CharStats.setDefense(Defense);
         CharStats.setCriticalChance(CriticalChance);
@@ -69,6 +71,18 @@ public class character {
         return CharStats;
     }
 
+    public Loot getCharLoot() {
+        return CharLoot;
+    }
+
+    public void setExperience(int experience) {
+        Experience = experience;
+    }
+
+    public void setCharLoot(Loot charLoot) {
+        CharLoot = charLoot;
+    }
+
     public void setCharStats(int Strength, int Intelligence, int Stamina, int Hp, int Defense, int CriticalChance, int CriticalPower) {
         CharStats.setStrength(CharStats.getStrength() + Strength);
         CharStats.setMaxIntelligence(CharStats.getMaxIntelligence() + Intelligence);
@@ -100,35 +114,49 @@ public class character {
             case "BaseAttack":
                 if (CharStats.getStamina() >= 10) {
                     CharStats.setStamina(CharStats.getStamina() - 10);
-                    return CharStats.getStrength() + CharAbility.getBaseAttack();
+                    if (CharLoot == null) {
+                        return CharStats.getStrength() + CharAbility.getBaseAttack();
+                    } else {
+                        return CharStats.getStrength() + CharAbility.getBaseAttack() + CharLoot.getAttack();
+                    }
                 } else {
                     return 0;
                 }
             case "StrongAttack":
                 if (CharStats.getStamina() >= 25) {
                     CharStats.setStamina(CharStats.getStamina() - 25);
-                    return CharStats.getStrength() + CharAbility.getStrongAttack();
+                    if (CharLoot == null) {
+                        return CharStats.getStrength() + CharAbility.getStrongAttack();
+                    } else {
+                        return CharStats.getStrength() + CharAbility.getStrongAttack() + CharLoot.getAttack();
+                    }
                 } else {
                     return 0;
                 }
-            case "SpecialAbilityOne":
+            case "BaseAbility":
                 if (CharStats.getIntelligence() >= 10) {
-                    CharStats.setStamina(CharStats.getIntelligence() - 10);
-                    return CharStats.getMaxIntelligence() + CharAbility.getBaseAbility();
+                    CharStats.setIntelligence(CharStats.getIntelligence() - 10);
+                    if (CharLoot == null) {
+                        return CharStats.getMaxIntelligence() + CharAbility.getBaseAbility();
+                    } else {
+                        return CharStats.getMaxIntelligence() + CharAbility.getBaseAbility() + CharLoot.getIntelligence();
+                    }
                 } else {
                     return 0;
                 }
-            case "SpecialAbilityTwo":
+            case "SpecialAbility":
                 if (CharStats.getIntelligence() >= 25) {
-                    CharStats.setStamina(CharStats.getIntelligence() - 25);
-                    return CharStats.getMaxIntelligence() + CharAbility.getSpecialAbility();
+                    CharStats.setIntelligence(CharStats.getIntelligence() - 25);
+                    if (CharLoot == null) {
+                        return CharStats.getMaxIntelligence() / 5 + CharAbility.getSpecialAbility();
+                    } else {
+                        return CharStats.getMaxIntelligence() / 5 + CharAbility.getSpecialAbility() + CharLoot.getIntelligence();
+                    }
                 } else {
                     return 0;
                 }
+            case "Heal":
+                return CharStats.getIntelligence() + CharAbility.getHeal() + CharLoot.getIntelligence();
         }
-    }
-
-    public int MakeHeal() {
-        return CharStats.getIntelligence() + CharAbility.getHeal();
     }
 }
