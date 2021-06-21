@@ -29,7 +29,7 @@ public class LoadSave extends Main{
         charStats.put("Strength", Player.getCharStats().getStrength());
         charStats.put("MaxIntelligence", Player.getCharStats().getMaxIntelligence());
         charStats.put("MaxStamina", Player.getCharStats().getMaxStamina());
-        charStats.put("Hp", Player.getCharStats().getHp());
+        charStats.put("Hp", Player.getCharStats().getMaxHp());
         charStats.put("Defense", Player.getCharStats().getDefense());
         charStats.put("CriticalChance", Player.getCharStats().getCriticalChance());
         charStats.put("CriticalPower", Player.getCharStats().getCriticalPower());
