@@ -1,8 +1,4 @@
 public class MakeCharacter extends Main {
-    private static final Window win = new Window();
-    private static final Ability Ability = new Ability();
-    private static final Stats Stats = new Stats();
-
 
     public void MakeCharacter() {
         win.Print("Hello, Player");
@@ -10,31 +6,50 @@ public class MakeCharacter extends Main {
         win.Print("Human - +10 Intelligence, +10 CriticalChance");
         win.Print("Orc   - +10 Strength, +10, Stamina, +50 Hp, +10 Defense, +20 CriticalPower");
         win.Print("Elf   - +50 Stamina, +5 CriticalChance, +10 CriticalPower");
-        win.Print("Write the name of class below");
 
-        String RaceName = win.getText();
+        win.setPanelRace();
+        for ( ; win.getResult() == null; ) { }
+        String RaceName = win.getResult();
+        win.setResult(null);
+        win.removePanelRace();
 
         win.Print("Nice chose");
         win.Print("Now chose your class");
         win.Print("Warrior  - +5 Strength, +10 Stamina, +50 Hp, +10 Defense");
         win.Print("Mage     - +10 Intelligence, +10 CriticalChance");
         win.Print("Assassin - +10 Strength, +50 stamina, +20 CriticalChance, +50 CriticalPower");
-        win.Print("Write the name of class below");
 
-        String ClassName = win.getText();
+        win.setPanelClass();
+        for ( ; win.getResult() == null; ) { }
+        String ClassName = win.getResult();
+        win.setResult(null);
+        win.removePanelClass();
 
         win.Print("Nice chose");
         win.Print(RaceName + ", what is your name?");
 
-        String CharName = win.getText();
+        win.setPanelText();
+        for ( ; win.getResult() == null; ) { }
+        String CharName = win.getResult();
+        win.setResult(null);
+        win.resetTextField();
+        win.removePanelText();
 
         win.Print("Hi, " + CharName + ", how old are you?");
 
-        int CharAge = win.getInt();
+        win.setPanelText();
+        for ( ; win.getResult() == null; ) { }
+        int CharAge = Integer.parseInt(win.getResult());
+        win.setResult(null);
+        win.resetTextField();
+        win.removePanelText();
+
         Player.MakeCharacter(CharName, CharAge, 1, 0, ClassName, RaceName);
 
         win.Print("Now your character is created!");
         win.Print("Have a nice game!");
+
+        win.resetTextArea();
     }
 
     public void SetClassStats(String ClassName) {
