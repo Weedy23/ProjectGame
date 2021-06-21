@@ -1,10 +1,7 @@
 import java.io.IOException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Game extends Main {
-    private static final Window win = new Window();
-    private static final LoadSave LOAD_SAVE = new LoadSave();
     private static String time = "Day";
 
     public void Game() throws IOException {
@@ -57,7 +54,9 @@ public class Game extends Main {
                 }
                 win.Print("Do you want to change your loot& Yes or No!");
 
-                switch (win.getText()) {
+                win.setPanelYesNo();
+                for ( ; win.getResult() == null; ) { }
+                switch (win.getResult()) {
                     case "Yes":
                         if (Player.getCharLoot() == null) {
                             Player.getCharStats().setMaxHp(Player.getCharStats().getMaxHp() + loot.getHp());
@@ -74,6 +73,9 @@ public class Game extends Main {
                         win.Print("Ok");
                         break;
                 }
+                win.setResult(null);
+                win.removePanelYesNo();
+                win.resetTextArea();
             } else {
                 win.Print("You got nothing");
             }
@@ -82,7 +84,10 @@ public class Game extends Main {
             if (enemies != null) {
                 win.Print("You meet " + enemies.getName());
                 win.Print("FIGHT!");
+                win.setPanelAttack();
                 enemies = fight(enemies);
+                win.removePanelAttack();
+                win.resetTextArea();
             } else {
                 win.Print("You are lucky! you don't have to fight");
             }
@@ -96,9 +101,9 @@ public class Game extends Main {
             win.Print("Your Intelligence " + Player.getCharStats().getIntelligence());
             win.Print("enemies hp " + enemies.getHp());
             win.Print("");
-            win.Print("Choose attack type");
-            win.Print("BaseAttack, StrongAttack, BaseAbility, SpecialAbility, Heal");
-            switch (win.getText()) {
+
+            for ( ; win.getResult() == null; ) { }
+            switch (win.getResult()) {
                 case "BaseAttack":
                     enemies.setHp(enemies.getHp() - MakeAttack(Player.MakeAttack("BaseAttack"), Player.getCharStats().getCriticalChance(), Player.getCharStats().getCriticalPower(), enemies.getDodge(), enemies.getDefense()));
                     break;
@@ -115,10 +120,13 @@ public class Game extends Main {
                     Player.getCharStats().setHp(MakeHeal(Player.getCharStats().getHp(), Player.getCharStats().getMaxHp(), Player.MakeAttack("Heal")));
                     break;
             }
+            win.resetTextArea();
+            win.setResult(null);
 
             Player.getCharStats().setHp(Player.getCharStats().getHp() - MakeAttack(enemies.getAttack(), 0, 1, 20, Player.getCharStats().getDefense()));
 
         }
+
         if (enemies.getHp() <= 0) {
             win.Print("You won");
             Player.setExperience(Player.getExperience() + enemies.getExperience());
@@ -127,6 +135,7 @@ public class Game extends Main {
             win.Print("You lose");
             LOAD_SAVE.FileDelete(Paths.get(PATHcharacter));
         }
+        win.resetTextArea();
         return null;
     }
 
